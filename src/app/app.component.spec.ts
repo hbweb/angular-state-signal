@@ -17,7 +17,7 @@ describe('AppComponent', () => {
   it(`should have the 'angular-state-signal' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('angular-state-signal');
+    expect(app.title).toEqual('Angular 18');
   });
 
   it('should render title', () => {
