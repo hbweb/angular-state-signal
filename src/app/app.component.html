@@ -1,49 +1,10 @@
-<main class="w-screen">
-  <div class="container mx-auto">
-    <div class="my-8 flex flex-row items-center">
-      <select class="mr-8 select-btn" (change)="onSelected($event.target)">
-        <option value="">--Select a team member--</option>
-        @for(user of users(); track user.id) {
-        <option [value]="user.id">{{ user.name }}</option>
-        }
-      </select>
-      <input type="checkbox" (change)="onFilter($event.target)" id="incompleteTasks" class="mr-2"/>
-      <label for="incompleteTasks"> Only incomplete tasks </label>
+<main class="bg-white dark:bg-gray-800">
+
+  <!-- Main Section -->
+  <div class="flex items-center">
+    <div class="container relative flex flex-col px-6 py-4 mx-auto">
+      <router-outlet></router-outlet>
     </div>
-    <h2 class="text-3xl text-blue-700">
-      ToDos @if (currentMember()) { for: {{ currentMember()?.name }}
-      }
-    </h2>
-    @if (isLoading()) {
-    <div>Loading ...</div>
-    } @if (todosForMember().length > 0) {
-    <div>
-
-      <div class="flex flex-row items-center mt-8">
-        <div class="px-3 w-64">Todo</div>
-        <div>Completed?</div>
-      </div>
-
-
-      @for(t of todosForMember(); track t.id) {
-        <div class="flex flex-row items-center">
-          <div class="px-3 w-64">{{ t.title }}</div>
-          <input
-          type="checkbox"
-          [checked]="t.completed"
-          (change)="onChangeStatus(t, $event.target)"
-            />
-        </div>
-
-
-      } @empty { @if(!isLoading()) {
-      <div>No todos found</div>
-      } }
-    </div>
-    } @if (errorMessage()) {
-    <div>Error: {{ errorMessage() }}</div>
-    }
   </div>
-</main>
 
-<router-outlet />
+</main>
